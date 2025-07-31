@@ -4,6 +4,10 @@
 ## Introduction
 Welcome to the **ROVR Open Dataset** repository! This dataset is designed to empower autonomous driving and robotics research by providing rich, real-world data captured from ADAS cameras and LiDAR sensors. The dataset spans **50+ countries** with over **20 million kilometers** of driving data, making it ideal for training and developing advanced AI algorithms for depth estimation, object detection, and semantic segmentation.
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png" alt="LightCone" width="500"/>
+</div>
+
 <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png" alt="LightCone" width="500"/>
 
 ![LightCone](https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png)
