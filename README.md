@@ -4,6 +4,8 @@
 ## Introduction
 Welcome to the **ROVR Open Dataset** repository! This dataset is designed to empower autonomous driving and robotics research by providing rich, real-world data captured from ADAS cameras and LiDAR sensors. The dataset spans **50+ countries** with over **20 million kilometers** of driving data, making it ideal for training and developing advanced AI algorithms for depth estimation, object detection, and semantic segmentation.
 
+<img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png" alt="LightCone" width="500"/>
+
 ![LightCone](https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png)
 
 ## Key Features
@@ -28,37 +30,6 @@ We will be hosting global challenges to advance autonomous driving research. The
 - **Monocular Depth Estimation (Coming Soon):** Depth estimation algorithms using camera and LiDAR ground truth.
 - **Fusion Detection & Segmentation (Coming Soon):** Real-time vehicle and obstacle detection using camera and LiDAR data, along with pixel-level segmentation.
 
-## Video Demonstrations
-
-### Points Cloud & Monocular Depth Estimation
-
-<div style="display: flex; justify-content: space-around;">
-
-  <a href="https://youtu.be/-dn4NX1g9oQ" target="_blank">
-    <img src="https://img.youtube.com/vi/-dn4NX1g9oQ/0.jpg" alt="Points Cloud" width="200">
-  </a>
-
-  <a href="https://youtu.be/4UyALsfSBFY" target="_blank">
-    <img src="https://img.youtube.com/vi/4UyALsfSBFY/0.jpg" alt="Monocular Depth Estimation" width="200">
-  </a>
-
-</div>
-
-### Object Detection & Semantic Segmentation
-
-<div style="display: flex; justify-content: space-around;">
-
-  <a href="https://youtu.be/BX0H_7tAO5M" target="_blank">
-    <img src="https://img.youtube.com/vi/BX0H_7tAO5M/0.jpg" alt="Object Detection" width="200">
-  </a>
-
-  <a href="https://youtu.be/SK63VvDSmhg" target="_blank">
-    <img src="https://img.youtube.com/vi/SK63VvDSmhg/0.jpg" alt="Semantic Segmentation" width="200">
-  </a>
-
-</div>
-
-
 ## Licensing
 
 The dataset is available under the following licenses:
@@ -75,9 +46,6 @@ Explore, download, and contribute to **ROVR Open Dataset** to help shape the fut
 - **Access Dataset (Open-Source License):** [Access Dataset](https://github.com/rovr-network/ROVR-Open-Dataset/tree/main/Samples)
 - **The full dataset will be available at the end of August.**
 
-![ROVR Vehicle with Branding](path_to_image_2.png)  
-*Above: The ROVR vehicle used for data collection.*
-
 ## Join the Community
 
 Contribute to the development of autonomous driving technologies by joining the ROVR community:
@@ -89,6 +57,3 @@ Contribute to the development of autonomous driving technologies by joining the 
 For more information on how to get started, explore our documentation or contact us for support:
 
 - [View the Documentation](https://app.gitbook.com/o/65VczzNipXRPRk8Y6pFa/s/CrCaZAKtrNMj1kPxghZg/rovr-doc/rovr-docs)
-
-![Sensor and Hardware Setup](path_to_image_3.png)  
-*Above: The sensors and hardware used for data collection, including LiDAR, cameras, and GNSS receivers.*
