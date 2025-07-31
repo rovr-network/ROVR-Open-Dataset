@@ -27,7 +27,7 @@ ROVR-Open-Dataset/
 ### Detailed Structure Description
 
 1. **Samples/${bag_name}/**  
-   - **Description**: Contains processed data clips with folder names matching the ROS bag names (e.g., `20250517173254-1025040009-34-lUNe`).
+- **Description**: Contains processed data clips with folder names matching the ROS bag names (e.g., `20250517173254-1025040009-34-lUNe`).
    - **Subfolders and files**:
      - `images/`: PNG images (1920 x 1080 px).
      - `pointclouds/`: Point cloud data in PCD format.
