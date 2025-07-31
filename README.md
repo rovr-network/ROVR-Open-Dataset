@@ -1,4 +1,6 @@
-![ROVR Car](https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/rovrcar.jpg)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/rovrcar.jpg" alt="ROVR-Car" width="700"/>
+</div>
 # ROVR Open Dataset
 
 ## Introduction
@@ -8,17 +10,15 @@ Welcome to the **ROVR Open Dataset** repository! This dataset is designed to emp
   <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png" alt="LightCone" width="500"/>
 </div>
 
-<img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png" alt="LightCone" width="500"/>
-
-![LightCone](https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png)
-
 ## Key Features
 - **Global Coverage:** 50+ countries with diverse driving environments and road scenarios.
 - **High-Resolution Data:** Data from high-precision **ADAS cameras** and **LiDAR sensors**.
 - **Real-World Scenarios:** Over **20M+ kilometers** of real-world driving data representing various environments and conditions.
 - **Comprehensive Data Types:** Includes point clouds, monocular depth estimation, object detection, and semantic segmentation.
 
-![Global Coverage](https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/Global%20coverage%20for%20scalable%20autonomy.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/Global%20coverage%20for%20scalable%20autonomy.png" alt="coverage" width="500"/>
+</div>
 
 ## Dataset Overview
 ROVR Open Dataset includes various data types to support different autonomous driving tasks:
