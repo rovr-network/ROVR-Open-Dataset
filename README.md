@@ -35,21 +35,11 @@ We will be hosting global challenges to advance autonomous driving research. The
 - **Fusion Detection & Segmentation (Coming Soon):** Real-time vehicle and obstacle detection using camera and LiDAR data, along with pixel-level segmentation.
 
 <div align="center">
-  <div style="display: inline-block; margin: 10px;">
-    <a href="https://youtu.be/4UyALsfSBFY" target="_blank">
-      <img src="https://img.youtube.com/vi/4UyALsfSBFY/0.jpg" alt="Monocular Depth Estimation" width="300"/>
-    </a>
-  </div>
-  <div style="display: inline-block; margin: 10px;">
-    <a href="https://youtu.be/BX0H_7tAO5M" target="_blank">
-      <img src="https://img.youtube.com/vi/BX0H_7tAO5M/0.jpg" alt="Object Detection" width="300"/>
-    </a>
-  </div>
-  <div style="display: inline-block; margin: 10px;">
-    <a href="https://youtu.be/SK63VvDSmhg" target="_blank">
-      <img src="https://img.youtube.com/vi/SK63VvDSmhg/0.jpg" alt="Semantic Segmentation" width="300"/>
-    </a>
-  </div>
+  <h3>Object Detection</h3>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/BX0H_7tAO5M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  <h3>Semantic Segmentation</h3>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/SK63VvDSmhg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 
