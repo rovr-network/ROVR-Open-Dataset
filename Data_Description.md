@@ -30,20 +30,20 @@ ROVR-Open-Dataset/
 - **Description**: Contains processed data clips with folder names matching the ROS bag names (e.g., `20250517173254-1025040009-34-lUNe`).
 - **Subfolders and files**:
   - `images/`: PNG images (1920 x 1080 px).
-     - `pointclouds/`: Point cloud data in PCD format.
-     - `annotation/`: Point cloud detection and segmentation results, containing:
-       - `detection_result/`: Detection results in `.txt` format.
-       - `segmentation_result/`: Segmentation results in `.txt` format.
-     - `ego_poses.json`: Interpolated GNSS positioning data.
-     - `ego_poses_raw.json`: Raw GNSS positioning data.
-     - `imu_data.csv`: IMU data in CSV format.
+  - `pointclouds/`: Point cloud data in PCD format.
+  - `annotation/`: Point cloud detection and segmentation results, containing:
+    - `detection_result/`: Detection results in `.txt` format.
+    - `segmentation_result/`: Segmentation results in `.txt` format.
+  - `ego_poses.json`: Interpolated GNSS positioning data.
+  -  `ego_poses_raw.json`: Raw GNSS positioning data.
+  - `imu_data.csv`: IMU data in CSV format.
 
 2. **ROVR_intrinsics_extrinsics/${device_serial}/**  
-   - **Description**: Camera and LiDAR parameters corresponding to the device serial number.
-   - **Files**:
-     - `ext.yaml`: LiDAR-to-camera extrinsic parameters (rotation matrix and translation vector).  
-       - **Note**: Apply coordinate transform before use: `x = -y`, `y = -z`, `z = x`.
-     - `int.yaml`: Camera intrinsic parameters (focal length, principal point, distortion coefficients).
+- **Description**: Camera and LiDAR parameters corresponding to the device serial number.
+- **Files**:
+  - `ext.yaml`: LiDAR-to-camera extrinsic parameters (rotation matrix and translation vector).  
+    - **Note**: Apply coordinate transform before use: `x = -y`, `y = -z`, `z = x`.
+  - `int.yaml`: Camera intrinsic parameters (focal length, principal point, distortion coefficients).
 
 ## Naming Conventions
 
