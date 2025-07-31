@@ -108,8 +108,7 @@ ROVR-Open-Dataset/
 
 ###### **Explanation**:
 - **category_id**: Object class ID:
-  - 1: Motor_vehicle, 2: Pedestrian, 3: Non-motor_vehicle, 4: Traffic_light,
-  - 5: Traffic_sign, 6: Lane_line, 7: Pole, 8: Traffic_cone, 9: Other, 10: Ground_marking, 11: Road.
+  - 1: Motor_vehicle, 2: Pedestrian, 3: Non-motor_vehicle, 4: Traffic_light, 5: Traffic_sign, 6: Lane_line, 7: Pole, 8: Traffic_cone, 9: Other, 10: Ground_marking, 11: Road.
 - **tracking_id**: Unique ID for tracking the object across frames.
 - **alpha**: Observation angle in radians, range [0, 2π].
 - **x1, y1, x2, y2**: Top-left and bottom-right corners of the 2D bounding box (pixels). -1 for missing data.
