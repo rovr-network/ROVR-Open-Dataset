@@ -28,8 +28,8 @@ ROVR-Open-Dataset/
 
 1. **Samples/${bag_name}/**  
 - **Description**: Contains processed data clips with folder names matching the ROS bag names (e.g., `20250517173254-1025040009-34-lUNe`).
-   - **Subfolders and files**:
-     - `images/`: PNG images (1920 x 1080 px).
+- **Subfolders and files**:
+  - `images/`: PNG images (1920 x 1080 px).
      - `pointclouds/`: Point cloud data in PCD format.
      - `annotation/`: Point cloud detection and segmentation results, containing:
        - `detection_result/`: Detection results in `.txt` format.
