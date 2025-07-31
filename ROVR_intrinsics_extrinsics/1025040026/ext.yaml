@@ -1,0 +1,4 @@
+# x = -y  # y = -z  # z = x
+lidar_to_camera:
+  rvec: [-0.25210084033613356, 0.50420168067226712, 0.25209999999999999]  # Rotation vector. Rodrigues. [deg,deg,deg]
+  tvec: [-0.016810000000000002, 0, 0.016810000000000002]  # Translation vector. [m,m,m]
