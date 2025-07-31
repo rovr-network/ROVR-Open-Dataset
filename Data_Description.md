@@ -187,27 +187,9 @@ lidar_to_camera:
 ```
 
 - **Explanation**:
-  - **rvec (Rotation Vector):** A 3D rotation vector using Rodrigues' rotation formula, given in degrees, describing the rotation between the LiDAR and camera coordinate systems. This can be converted to a 3x3 rotation matrix \( R \) using the Rodrigues' formula:
-
-\[
-R = \cos(\theta)I + (1 - \cos(\theta))k k^T + \sin(\theta)[k]_\times
-\]
-
-Where:
-- \( \theta = |\text{rvec}| \)
-- \( k = \text{rvec} / |\text{rvec}| \)
-- \( [k]_\times \) is the skew-symmetric matrix of \( k \)
-
+  - **rvec (Rotation Vector):** A 3D rotation vector using Rodrigues' rotation formula, given in degrees, describing the rotation between the LiDAR and camera coordinate systems. 
   - **tvec (Translation Vector):** A 3D vector describing the translation (offset) between the LiDAR and camera coordinate systems in meters.
-
-  - **Transformation Matrix:** The full extrinsic transformation is represented as a 4x4 homogeneous matrix:
-
-\[
-T = \begin{bmatrix}
-R & tvec \\
-0 & 1
-\end{bmatrix}
-\]
+  - **Transformation Matrix:** The full extrinsic transformation is represented as a 4x4 homogeneous matrix.
 
 **Note:** Before applying extrinsic parameters, the LiDAR coordinate system must be transformed using the following rule:
 
@@ -247,33 +229,7 @@ RMS: 0.0095
   - **K1, K2, K3, K4, K5, K6:** Radial distortion coefficients, modeling lens distortion.
   - **P1, P2:** Tangential distortion coefficients, modeling distortion due to lens misalignment.
   - **RMS:** Root mean square error of the calibration process.
-
-  - **Intrinsic Matrix (\( K \))**:
-
-\[
-K = \begin{bmatrix}
-FX & 0 & CX \\
-0 & FY & CY \\
-0 & 0 & 1
-\end{bmatrix}
-\]
-
-  - **Distortion Model (Brown-Conrady):**
-
-\[
-r^2 = x_{undistorted}^2 + y_{undistorted}^2
-\]
-
-\[
-x_{distorted} = x_{undistorted} (1 + K1 r^2 + K2 r^4 + K3 r^6) + 2 P1 x_{undistorted} y_{undistorted} + P2 (r^2 + 2 x_{undistorted}^2)
-\]
-
-\[
-y_{distorted} = y_{undistorted} (1 + K1 r^2 + K2 r^4 + K3 r^6) + P1 (r^2 + 2 y_{undistorted}^2) + 2 P2 x_{undistorted} y_{undistorted}
-\]
-
-Where \( K4, K5, K6 \) are higher-order radial distortion terms.
-
+  
 ---
 
 ## Usage
