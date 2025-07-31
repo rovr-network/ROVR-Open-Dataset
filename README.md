@@ -34,15 +34,6 @@ We will be hosting global challenges to advance autonomous driving research. The
 - **Monocular Depth Estimation (Coming Soon):** Depth estimation algorithms using camera and LiDAR ground truth.
 - **Fusion Detection & Segmentation (Coming Soon):** Real-time vehicle and obstacle detection using camera and LiDAR data, along with pixel-level segmentation.
 
-<div align="center">
-  <h3>Object Detection</h3>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/BX0H_7tAO5M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-  <h3>Semantic Segmentation</h3>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/SK63VvDSmhg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-
 ## Licensing
 
 The dataset is available under the following licenses:
