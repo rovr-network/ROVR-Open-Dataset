@@ -57,7 +57,7 @@ ROVR-Open-Dataset/
   - **Collection Sequence Number**: Sequence number within the collection (e.g., 34).
   - **Identifier Code**: Data verification identifier (e.g., lUNe).
 
-### Sensor Data in Samples/${bag_name}/
+### Sensor Data in `Samples/${bag_name}/`
 
 | File/Folder         | Description                        | Format     | Frame Rate | Coordinate System Definition    |
 |---------------------|------------------------------------|------------|------------|---------------------------------|
@@ -72,7 +72,7 @@ ROVR-Open-Dataset/
 
 | File/Folder         | Description                                                                                        | Format      |
 |---------------------|----------------------------------------------------------------------------------------------------|-------------|
-| ext.yaml            | LiDAR-to-camera extrinsic parameters, including rotation matrix and translation vector.            | .yaml       |
+| ext.yaml            | LiDAR-to-camera extrinsic parameters, including rotation vector and translation vector.            | .yaml       |
 | int.yaml            | Camera intrinsic parameters, including focal length, principal point, and distortion coefficients. | .yaml       |
 
 ---
@@ -98,10 +98,52 @@ ROVR-Open-Dataset/
 - **Description**: Detection and segmentation results for the images and point cloud.
 - **File Naming Convention**:  
   The annotation filenames are also based on the same UTC timestamp as the corresponding image and point cloud files. This ensures that the annotations match the exact frame captured in the image and point cloud data.
+  
+##### **Object Detection Annotations (`detection_result/`)**
+
+- **Description**: 3D and 2D object detection results in plain text format (.txt), each line representing a detected object with detailed fields. Each line contains:
+```
+[category_id] [tracking_id] [alpha] [x1] [y1] [x2] [y2] [height] [width] [length] [x] [y] [z] [rotation_y] [bbox_3d_points...]
+```
+
+###### **Explanation**:
+- **category_id**: Object class ID:
+  - 1: Motor_vehicle, 2: Pedestrian, 3: Non-motor_vehicle, 4: Traffic_light,
+  - 5: Traffic_sign, 6: Lane_line, 7: Pole, 8: Traffic_cone, 9: Other, 10: Ground_marking, 11: Road.
+- **tracking_id**: Unique ID for tracking the object across frames.
+- **alpha**: Observation angle in radians, range [0, 2π].
+- **x1, y1, x2, y2**: Top-left and bottom-right corners of the 2D bounding box (pixels). -1 for missing data.
+- **height, width, length**: 3D size of the object (in meters).
+- **x, y, z**: 3D location in camera coordinates (in meters).
+- **rotation_y**: Rotation around Y-axis (radians), range [-π, π].
+- **bbox_3d_points**: 8-point 3D bounding box, may be projected to 2D pixel space.
+
+---
+
+##### **Object Segmentation Annotations (`segmentation_result/`)**
+
+- **Description**: 2D image segmentation masks with category and pixel coordinates per object. Each line contains:
+```
+[category_id] [object_id] [x1] [y1] [x2] [y2] ... [xn] [yn]
+```
+
+###### **Explanation**:
+- **category_id**: Same ID system as detection annotations.
+- **object_id**: Unique ID per segmented object.
+- **[x1, y1], [x2, y2], ...**: Polygon points of the mask (in pixels).
+
+---
+
+##### **Notes on Annotation Data**
+
+- **Coordinate Systems**:
+  - 3D positions in detection results use camera coordinates. Apply the coordinate transformation from `ext.yaml` to align with LiDAR.
+  - Some 3D bounding box fields may be 2D projected points — verify with dataset version.
+  - Segmentation mask points are in pixel space, aligning with `../image/` data.
 
 #### **4. `ego_poses_raw.json` and `ego_poses.json`**
 
-##### **Description**:
+- **Description**: 
 - **`ego_poses_raw.json`**: Contains raw GNSS positioning data, which follows the GNSS standard with the following fields:
   - **Timestamp**: GNSS timestamp.
   - **lat**: Latitude.
@@ -114,7 +156,7 @@ ROVR-Open-Dataset/
   - **hemisphere_ew**: Eastern or Western hemisphere.
   - **quaternion**: Quaternion representing the rotation.
 
-##### **`ego_poses.json`**: Contains interpolated GNSS positioning data based on image timestamp, following the same structure as `ego_poses_raw.json`, but with timestamps matching the image data.
+- **`ego_poses.json`**: Contains interpolated GNSS positioning data based on image timestamp, following the same structure as `ego_poses_raw.json`, but with timestamps matching the image data.
 
 | Field           | Description                                   |
 |-----------------|-----------------------------------------------|
@@ -161,9 +203,9 @@ ROVR-Open-Dataset/
 ##### **Data Example**:
 ```csv
 timestamp, acc_x, acc_y, acc_z, gyro_x, gyro_y, gyro_z
-1747503144.1424189, 0.02, -0.01, 9.81, 0.005, 0.003, -0.002
-1747503145.1427877, 0.03, -0.02, 9.80, 0.004, 0.003, -0.001
-1747503146.1323285, 0.01, -0.01, 9.81, 0.005, 0.002, -0.003
+1747503144.066422725,-0.06345245393458754,1.0756415122747423,9.818998864889146,6.807146783081999e-06,-0.0035436609232569302,0.0026104203575969863
+1747503144.076391309,-0.055494749746285384,1.0912267539650202,9.795408273339271,0.0006594161759019893,-0.003767680104459781,0.0024891367766331452
+1747503144.086524977,-0.07948344075120986,1.0916746506839992,9.802085208892823,0.0007679316679443117,-0.003132297461968387,0.0022016243500468475
 ```
 
 - **Explanation**:
