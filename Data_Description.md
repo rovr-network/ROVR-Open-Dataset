@@ -1,4 +1,4 @@
-# ROVR Open Dataset - Data Directory Structure and Field Specifications
+# Data Directory Structure and Field Specifications
 
 ## Overview
 
@@ -8,20 +8,20 @@ The ROVR Open Dataset provides **processed data saved only in ROS 2 bag format**
 
 ```
 ROVR-Open-Dataset/
-├── Samples/                     # Sample data clips
-│   ├── ${bag_name}/             # Folder name matches ROS bag name
-│   │   ├── images/              # Image data (.png)
-│   │   ├── pointclouds/         # Point cloud data (.pcd)
-│   │   ├── annotation/          # Point cloud detection and segmentation results
+├── Samples/                         # Sample data clips
+│   ├── ${bag_name}/                 # Folder name matches ROS bag name
+│   │   ├── images/                  # Image data (.png)
+│   │   ├── pointclouds/             # Point cloud data (.pcd)
+│   │   ├── annotation/              # Point cloud detection and segmentation results
 │   │   │   ├── detection_result/    # Detection results (.txt)
 │   │   │   └── segmentation_result/ # Segmentation results (.txt)
-│   │   ├── ego_poses.json       # Interpolated GNSS positioning data
-│   │   ├── ego_poses_raw.json   # Raw GNSS positioning data
-│   │   └── imu_data.csv         # IMU data (CSV format)
-├── ROVR_intrinsics_extrinsics/  # Camera and LiDAR parameter files
-│   ├── ${device_serial}/        # Subfolder named by device serial number (e.g., 1025040009)
-│   │   ├── ext.yaml             # LiDAR-to-camera extrinsic parameters
-│   │   └── int.yaml             # Camera intrinsic parameters
+│   │   ├── ego_poses.json           # Interpolated GNSS positioning data
+│   │   ├── ego_poses_raw.json       # Raw GNSS positioning data
+│   │   └── imu_data.csv             # IMU data (CSV format)
+├── ROVR_intrinsics_extrinsics/      # Camera and LiDAR parameter files
+│   ├── ${device_serial}/            # Subfolder named by device serial number (e.g., 1025040009)
+│   │   ├── ext.yaml                 # LiDAR-to-camera extrinsic parameters
+│   │   └── int.yaml                 # Camera intrinsic parameters
 ```
 
 ### Detailed Structure Description
@@ -59,18 +59,226 @@ ROVR-Open-Dataset/
 
 ### Sensor Data in Samples/${bag_name}/
 
-| File/Folder         | Description                       | Format      |
-|---------------------|-----------------------------------|-------------|
-| images/             | PNG images                        | .png        |
-| pointclouds/        | Point cloud data                  | .pcd        |
-| annotation/         | detection & segmentation results  | .txt        |
-| ego_poses.json      | Interpolated GNSS positioning data| .json       |
-| ego_poses_raw.json  | Raw GNSS positioning data         | .json       |
-| imu_data.csv        | IMU data                          | .csv        |
+| File/Folder         | Description                        | Format     | Frame Rate | Coordinate System Definition    |
+|---------------------|------------------------------------|------------|------------|---------------------------------|
+| images/             | Image data                         | .png       | 5 Hz       | X: Right,    Y: Down, Z: Forward|
+| pointclouds/        | Point cloud data                   | .pcd       | 5 Hz       | X: Forward,  Y: Left, Z: Up     |
+| annotation/         | Detection and segmentation results | .txt       | 5 Hz       |                                 |
+| ego_poses.json      | Interpolated GNSS positioning data | .json      | 5 Hz       | According to GNSS standard      |
+| ego_poses_raw.json  | Raw GNSS positioning data          | .json      | 1 Hz       | According to GNSS standard      |
+| imu_data.csv        | IMU data                           | .csv       | 100 Hz     | X: Backward, Y: Left, Z: Down   |
+
+### Camera and LiDAR Parameters in `ROVR_intrinsics_extrinsics/${device_serial}/`
+
+| File/Folder         | Description                                                                                        | Format      |
+|---------------------|----------------------------------------------------------------------------------------------------|-------------|
+| ext.yaml            | LiDAR-to-camera extrinsic parameters, including rotation matrix and translation vector.            | .yaml       |
+| int.yaml            | Camera intrinsic parameters, including focal length, principal point, and distortion coefficients. | .yaml       |
+
+---
+
+## Descriptions:
+
+### Sensor Data in `Samples/${bag_name}/`
+
+#### **1. `images/`**
+
+- **Description**: PNG format images with a resolution of 1920×1080 pixels.
+- **File Naming Convention**:  
+  The image filenames are based on UTC timestamps, precise to nanoseconds, ensuring that the file names correspond directly with other data files (point cloud, annotation).  
+
+#### **2. `pointclouds/`**
+
+- **Description**: PCD format point cloud data.
+- **File Naming Convention**:  
+  The point cloud filenames follow the same UTC timestamp convention as the image filenames, ensuring that each point cloud file corresponds to a specific image file.
+
+#### **3. `annotation/`**
+
+- **Description**: Detection and segmentation results for the images and point cloud.
+- **File Naming Convention**:  
+  The annotation filenames are also based on the same UTC timestamp as the corresponding image and point cloud files. This ensures that the annotations match the exact frame captured in the image and point cloud data.
+
+#### **4. `ego_poses_raw.json` and `ego_poses.json`**
+
+##### **Description**:
+- **`ego_poses_raw.json`**: Contains raw GNSS positioning data, which follows the GNSS standard with the following fields:
+  - **Timestamp**: GNSS timestamp.
+  - **lat**: Latitude.
+  - **lon**: Longitude.
+  - **utm_x, utm_y, utm_z**: UTM coordinates.
+  - **heading**: Heading in degrees (0~360, clockwise from north).
+  - **speed**: Speed in m/s.
+  - **date**: Date in ddmmyy format.
+  - **hemisphere_ns**: Northern or Southern hemisphere.
+  - **hemisphere_ew**: Eastern or Western hemisphere.
+  - **quaternion**: Quaternion representing the rotation.
+
+##### **`ego_poses.json`**: Contains interpolated GNSS positioning data based on image timestamp, following the same structure as `ego_poses_raw.json`, but with timestamps matching the image data.
+
+| Field           | Description                                   |
+|-----------------|-----------------------------------------------|
+| timestamp       | GNSS timestamp                                |
+| lat             | Latitude                                      |
+| lon             | Longitude                                     |
+| utm_x           | UTM X coordinate                              |
+| utm_y           | UTM Y coordinate                              |
+| utm_z           | UTM Z coordinate                              |
+| heading         | Heading (0~360 degrees, clockwise from north) |
+| speed           | Speed (in m/s)                                |
+| date            | Date (ddmmyy format)                          |
+| hemisphere_ns   | Northern or Southern Hemisphere               |
+| hemisphere_ew   | Eastern or Western Hemisphere                 |
+| quaternion      | Quaternion (rotation representation)          |
+
+##### **Data Example**:
+```json
+{
+  "timestamp": 1747503144.1424189,
+  "lat": 37.77150665166667,
+  "lon": -122.42305399166666,
+  "utm_x": 550811.2977794447,
+  "utm_y": 4180620.4009261196,
+  "utm_z": 0.0,
+  "heading": 332.79,
+  "speed": 0.0,
+  "date": "170525",
+  "hemisphere_ns": "N",
+  "hemisphere_ew": "W",
+  "quaternion": [-0.9719404768572004, 0.0, 0.0, 0.23522693180543294]
+}
+```
+
+- **Explanation**:
+  - `ego_poses_raw.json` contains raw GNSS positioning data, with a frequency of 1 Hz.
+  - `ego_poses.json` contains interpolated GNSS positioning data based on image timestamps, with a frequency of 5 Hz.
+
+
+#### **5. `imu_data.csv`**
+
+- **Description**: IMU raw data in CSV format with columns: [timestamp, acc_x, acc_y, acc_z, gyro_x, gyro_y, gyro_z].
+
+##### **Data Example**:
+```csv
+timestamp, acc_x, acc_y, acc_z, gyro_x, gyro_y, gyro_z
+1747503144.1424189, 0.02, -0.01, 9.81, 0.005, 0.003, -0.002
+1747503145.1427877, 0.03, -0.02, 9.80, 0.004, 0.003, -0.001
+1747503146.1323285, 0.01, -0.01, 9.81, 0.005, 0.002, -0.003
+```
+
+- **Explanation**:
+  - **Timestamp**: UTC Timestamp of the IMU data.
+  - **acc_x, acc_y, acc_z**: Acceleration data in the X, Y, Z axes (in m/s²).
+  - **gyro_x, gyro_y, gyro_z**: Gyroscope data in the X, Y, Z axes (in rad/s).
+  - **Frequency**: 100 Hz.
+
+### Camera and LiDAR Parameters in `ROVR_intrinsics_extrinsics/${device_serial}/`
+
+#### 1. `ext.yaml` - LiDAR-Camera Extrinsic Parameters
+
+- **Description**: Contains the extrinsic parameters that define the transformation from the LiDAR coordinate system to the camera coordinate system, using a rotation vector and a translation vector. The filename `ext.yaml` is fixed, with parameters specific to the device serial number.
+
+##### **Data Example**:
+```yaml
+# x = -y  # y = -z  # z = x
+lidar_to_camera:
+  rvec: [1.7649999999999999, 1.008, 0.25209999999999999]  # Rotation vector. Rodrigues. [deg, deg, deg]
+  tvec: [-0.016810000000000002, 0, 0.016810000000000002]  # Translation vector. [m, m, m]
+```
+
+- **Explanation**:
+  - **rvec (Rotation Vector):** A 3D rotation vector using Rodrigues' rotation formula, given in degrees, describing the rotation between the LiDAR and camera coordinate systems. This can be converted to a 3x3 rotation matrix \( R \) using the Rodrigues' formula:
+
+\[
+R = \cos(\theta)I + (1 - \cos(\theta))k k^T + \sin(\theta)[k]_\times
+\]
+
+Where:
+- \( \theta = |\text{rvec}| \)
+- \( k = \text{rvec} / |\text{rvec}| \)
+- \( [k]_\times \) is the skew-symmetric matrix of \( k \)
+
+  - **tvec (Translation Vector):** A 3D vector describing the translation (offset) between the LiDAR and camera coordinate systems in meters.
+
+  - **Transformation Matrix:** The full extrinsic transformation is represented as a 4x4 homogeneous matrix:
+
+\[
+T = \begin{bmatrix}
+R & tvec \\
+0 & 1
+\end{bmatrix}
+\]
+
+**Note:** Before applying extrinsic parameters, the LiDAR coordinate system must be transformed using the following rule:
+
+```
+x = -y
+y = -z
+z = x
+```
+
+---
+
+#### 2. `int.yaml` - Camera Intrinsic Parameters
+
+- **Description**: Contains the intrinsic parameters of the camera, including focal length, principal point, and distortion coefficients, which define the internal geometry of the camera. The filename `int.yaml` is fixed, with parameters specific to the device serial number.
+
+##### **Data Example**:
+```yaml
+FX: 1190.9380383925
+FY: 1190.8862851737
+CX: 955.6705012175
+CY: 540.1090098440
+K1: -0.0586809591
+K2: -0.4292077180
+P1: -0.0000209962
+P2: 0.0000513478
+K3: -0.0282192110
+K4: 0.3687679523
+K5: -0.5661097302
+K6: -0.1486583365
+RMS: 0.0095
+```
+
+- **Explanation**:
+
+  - **FX, FY:** Focal lengths in the X and Y axes (in pixels).
+  - **CX, CY:** Principal point (optical center) in the X and Y axes (in pixels).
+  - **K1, K2, K3, K4, K5, K6:** Radial distortion coefficients, modeling lens distortion.
+  - **P1, P2:** Tangential distortion coefficients, modeling distortion due to lens misalignment.
+  - **RMS:** Root mean square error of the calibration process.
+
+  - **Intrinsic Matrix (\( K \))**:
+
+\[
+K = \begin{bmatrix}
+FX & 0 & CX \\
+0 & FY & CY \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+
+  - **Distortion Model (Brown-Conrady):**
+
+\[
+r^2 = x_{undistorted}^2 + y_{undistorted}^2
+\]
+
+\[
+x_{distorted} = x_{undistorted} (1 + K1 r^2 + K2 r^4 + K3 r^6) + 2 P1 x_{undistorted} y_{undistorted} + P2 (r^2 + 2 x_{undistorted}^2)
+\]
+
+\[
+y_{distorted} = y_{undistorted} (1 + K1 r^2 + K2 r^4 + K3 r^6) + P1 (r^2 + 2 y_{undistorted}^2) + 2 P2 x_{undistorted} y_{undistorted}
+\]
+
+Where \( K4, K5, K6 \) are higher-order radial distortion terms.
+
+---
 
 ## Usage
 
-- **Data Access**: Find processed data in the `Samples/${bag_name}/` folder and corresponding camera and LiDAR parameters under `ROVR_intrinsics_extrinsics/${device_serial}/`.
+- **Data Access**: Find the processed data in the `Samples/${bag_name}/` folder, and the corresponding camera and LiDAR parameters in the `ROVR_intrinsics_extrinsics/${device_serial}/` folder.
 - **Repository**: [https://github.com/rovr-network/ROVR-Open-Dataset](https://github.com/rovr-network/ROVR-Open-Dataset)  
   > This repository currently contains only one sample ROS bag. The full dataset will be open-sourced by the end of August, with download links provided.
 
