@@ -50,6 +50,18 @@ Explore, download, and contribute to **ROVR Open Dataset** to help shape the fut
 - **Access Dataset (Open-Source License):** [Access Dataset](https://github.com/rovr-network/ROVR-Open-Dataset/tree/main/Samples)
 - **The full dataset will be available at the end of August.**
 
+## Citation
+
+If you use the ROVR Open Dataset or related resources, please cite us as:
+
+```
+@inproceedings{
+
+}
+```
+
+This citation will be updated once the official publication is available.
+
 ## Join the Community
 
 Contribute to the development of autonomous driving technologies by joining the ROVR community:
