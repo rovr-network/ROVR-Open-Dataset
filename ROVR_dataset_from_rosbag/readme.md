@@ -15,7 +15,7 @@ This is a toolkit for processing ROS2 bag files, capable of extracting images, p
 ## Environment Setup
 
 ### System Requirements
-- Ubuntu: Recommended 18.04 or higher
+- Ubuntu: Recommended 22.04 or higher
 - Python: 3.8+
 - ROS2: Version corresponding to the Ubuntu system
 
