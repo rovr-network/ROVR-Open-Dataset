@@ -60,4 +60,4 @@ Contribute to the development of autonomous driving technologies by joining the 
 ## Support & Documentation
 For more information on how to get started, explore our documentation or contact us for support:
 
-- [View the Documentation](https://app.gitbook.com/o/65VczzNipXRPRk8Y6pFa/s/CrCaZAKtrNMj1kPxghZg/rovr-doc/rovr-docs)
+- [View the Documentation](https://rovr-network.gitbook.io/rovr-docs)
