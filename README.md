@@ -3,6 +3,12 @@
 </div>
 # ROVR Open Dataset
 
+[![arXiv](https://img.shields.io/badge/arXiv-Coming%20Soon-b31b1b)](https://arxiv.org/)
+[![Project Page](https://img.shields.io/badge/Project%20Page-ROVR--Open--Dataset-blue)](https://xiandaguo.net/ROVR-Open-Dataset/)
+[![Hugging Face 🤗](https://img.shields.io/badge/HuggingFace-Coming%20Soon-orange)](https://huggingface.co/)
+[![Benchmark](https://img.shields.io/badge/Benchmark-Coming%20Soon-yellow)](https://example.com/)
+
+
 ## Introduction
 Welcome to the **ROVR Open Dataset** repository! This dataset is designed to empower autonomous driving and robotics research by providing rich, real-world data captured from ADAS cameras and LiDAR sensors. The dataset spans **50+ countries** with over **20 million kilometers** of driving data, making it ideal for training and developing advanced AI algorithms for depth estimation, object detection, and semantic segmentation.
 
