@@ -35,6 +35,32 @@ ROVR Open Dataset includes various data types to support different autonomous dr
 - **Object Detection:** Real-time detection of vehicles, pedestrians, and obstacles.
 - **Semantic Segmentation:** Pixel-level segmentation of roads, obstacles, and other features.
 
+<div style="text-align: center;">
+
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/points_cloud_uniform.gif" width="300"/><br/>
+    <strong>LiDAR Point Clouds</strong>
+  </div>
+
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/monocular_depth_estimation_uniform.gif" width="300"/><br/>
+    <strong>Monocular Depth Estimation</strong>
+  </div>
+
+  <br/>
+
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/object_detection_uniform.gif" width="300"/><br/>
+    <strong>Object Detection</strong>
+  </div>
+
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/semantic_segmentation_uniform.gif" width="300"/><br/>
+    <strong>Semantic Segmentation</strong>
+  </div>
+
+</div>
+
 ## Challenges
 We will be hosting global challenges to advance autonomous driving research. These challenges will focus on the following areas:
 
