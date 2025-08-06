@@ -12,6 +12,7 @@ ROVR-Open-Dataset/
 │   ├── ${bag_name}/                 # Folder name matches ROS bag name
 │   │   ├── images/                  # Image data (.png)
 │   │   ├── pointclouds/             # Point cloud data (.pcd)
+│   │   ├── depth/                   # Depth image (.png)
 │   │   ├── annotation/              # Point cloud detection and segmentation results
 │   │   │   ├── detection_result/    # Detection results (.txt)
 │   │   │   └── segmentation_result/ # Segmentation results (.txt)
@@ -31,6 +32,7 @@ ROVR-Open-Dataset/
 - **Subfolders and files**:
   - `images/`: PNG images (1920 x 1080 px).
   - `pointclouds/`: Point cloud data in PCD format.
+  - `depth/`: PNG images (1920 x 1080 px).
   - `annotation/`: Point cloud detection and segmentation results, containing:
     - `detection_result/`: Detection results in `.txt` format.
     - `segmentation_result/`: Segmentation results in `.txt` format.
@@ -63,6 +65,7 @@ ROVR-Open-Dataset/
 |---------------------|------------------------------------|------------|------------|---------------------------------|
 | images/             | Image data                         | .png       | 5 Hz       | X: Right,    Y: Down, Z: Forward|
 | pointclouds/        | Point cloud data                   | .pcd       | 5 Hz       | X: Forward,  Y: Left, Z: Up     |
+| depth/              | Depth image data                   | .png       | 5 Hz       | X: Right,    Y: Down, Z: Forward|
 | annotation/         | Detection and segmentation results | .txt       | 5 Hz       |                                 |
 | ego_poses.json      | Interpolated GNSS positioning data | .json      | 5 Hz       | According to GNSS standard      |
 | ego_poses_raw.json  | Raw GNSS positioning data          | .json      | 1 Hz       | According to GNSS standard      |
