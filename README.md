@@ -102,7 +102,7 @@ Contribute to the development of autonomous driving technologies by joining the 
 
 ## Collaborators
 
-We are proud to collaborate with the following partners:
+We are proud to collaborate with the following partners, with more to be added in the future:
 
 <table>
   <tr>
