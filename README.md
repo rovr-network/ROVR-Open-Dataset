@@ -58,6 +58,33 @@ ROVR Open Dataset includes various data types to support different autonomous dr
   </tr>
 </table>
 
+## ROVR Open Dataset Overview
+
+### Dataset Volume
+The first batch of the ROVR Open Dataset includes **1,363 clips**, each containing **30 seconds of data**, collected from diverse global environments to support autonomous driving research.
+
+### Scene Coverage
+The dataset spans three scene types, each with varied conditions to ensure comprehensive representation:
+
+- **Highway**: High-speed road scenarios.
+- **Urban**: City environments with complex traffic patterns.
+- **Rural**: Less dense, open-road settings.
+
+**Conditions**: Each scene type includes **Night**, **Rainy**, and **Normal** conditions for robust scenario diversity.
+
+### Dataset Split
+The dataset is divided as follows:
+
+- **Training Set**: 1,296 clips
+- **Test Set**: 67 clips
+
+### Annotations
+- **Current**: Ground truth annotations are provided for **monocular depth estimation**.
+- **Planned**: Annotations for **object detection** and **semantic segmentation** will be included in future releases.
+
+### Future Releases
+A second batch of data is planned for open-source release to further expand the dataset’s scope and utility.
+
 ## Challenges
 We will be hosting global challenges to advance autonomous driving research. These challenges will focus on the following areas:
 
