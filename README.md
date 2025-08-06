@@ -100,6 +100,24 @@ Contribute to the development of autonomous driving technologies by joining the 
 - [Join the Discussion on Discord](https://discord.com/invite/eUw3Hn4ruF)
 - [Contribute on GitHub](https://github.com/rovr-network/ROVR-Open-Dataset/tree/main)
 
+## Collaborators
+
+We are proud to collaborate with the following partners:
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/GeoDNET_logo.png" alt="GeoDNET Logo" height="80"/>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/Tsinghua_logo.png" alt="Tsinghua Logo" height="80"/>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/UC_Berkeley_logo.png" alt="UC Berkeley Logo" height="80"/>
+    </td>
+  </tr>
+</table>
+
 ## Support & Documentation
 For more information on how to get started, explore our documentation or contact us for support:
 
