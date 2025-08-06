@@ -77,8 +77,8 @@ For detailed licensing information, please see [LICENSE.md](https://github.com/r
 
 Explore, download, and contribute to **ROVR Open Dataset** to help shape the future of autonomous driving.
 
-- **Access Dataset (Open-Source License):** [Access Dataset](https://github.com/rovr-network/ROVR-Open-Dataset/tree/main/Samples)
-- **The full dataset will be available at the end of August.**
+- **Access Dataset Samples:** [Access Dataset](https://github.com/rovr-network/ROVR-Open-Dataset/tree/main/Samples)
+- **Access Full Dataset:** [Google Drive](https://drive.google.com/drive/folders/1nCT6grlveES2kYwYU6NPyjiF3rhJ-NZk?usp=sharing)
 
 ## Citation
 
