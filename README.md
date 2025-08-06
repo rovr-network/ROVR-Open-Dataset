@@ -123,6 +123,7 @@ This citation will be updated once the official publication is available.
 
 Contribute to the development of autonomous driving technologies by joining the ROVR community:
 
+- [Visit our Official Website](https://rovr.network/#/) 
 - [Follow us on X](https://x.com/ROVR_Network)
 - [Join the Discussion on Discord](https://discord.com/invite/eUw3Hn4ruF)
 - [Contribute on GitHub](https://github.com/rovr-network/ROVR-Open-Dataset/tree/main)
