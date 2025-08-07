@@ -14,7 +14,7 @@
 Welcome to the **ROVR Open Dataset** repository! This dataset is designed to empower autonomous driving and robotics research by providing rich, real-world data captured from ADAS cameras and LiDAR sensors. The dataset spans **50+ countries** with over **20 million kilometers** of driving data, making it ideal for training and developing advanced AI algorithms for depth estimation, object detection, and semantic segmentation.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/High-resolution%20ADAS%20and%20LiDAR%20for%20precision.png" alt="LightCone" width="500"/>
+  <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/Exploded%20View.png" alt="LightCone" width="500"/>
 </div>
 
 ## Key Features
@@ -70,7 +70,7 @@ The dataset spans three scene types, each with varied conditions to ensure compr
 - **Urban**: City environments with complex traffic patterns.
 - **Rural**: Less dense, open-road settings.
 
-**Conditions**: Each scene type includes **Night**, **Rainy**, and **Normal** conditions for robust scenario diversity.
+**Conditions**: Each scene type includes **Day**, **Night**, and **Rainy** conditions for robust scenario diversity.
 
 ### Dataset Split
 The dataset is divided as follows:
