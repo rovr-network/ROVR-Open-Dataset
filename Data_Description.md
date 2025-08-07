@@ -286,7 +286,9 @@ RMS: 0.0095
 
 - **Data Access**: Find the processed data in the `Samples/${bag_name}/` folder, and the corresponding camera and LiDAR parameters in the `ROVR_intrinsics_extrinsics/${device_serial}/` folder.
 - **Repository**: [https://github.com/rovr-network/ROVR-Open-Dataset](https://github.com/rovr-network/ROVR-Open-Dataset)  
-  > This repository currently contains only one sample ROS bag. The full dataset will be open-sourced by the end of August, with download links provided.
+  > This repository currently contains only one sample ROS bag.
+
+- **Access Full Dataset:** [Google Drive](https://drive.google.com/drive/folders/1nCT6grlveES2kYwYU6NPyjiF3rhJ-NZk?usp=sharing)
 
 ## Contact
 
