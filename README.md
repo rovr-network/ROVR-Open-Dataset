@@ -112,8 +112,11 @@ Explore, download, and contribute to **ROVR Open Dataset** to help shape the fut
 If you use the ROVR Open Dataset or related resources, please cite us as:
 
 ```
-@inproceedings{
-
+@article{guo2025rovr,
+  title={ROVR-Open-Dataset: A Large-Scale Depth Dataset for Autonomous Driving},
+  author={Guo, Xianda and Zhang, Ruijun and Duan, Yiqun and Wang, Ruilin and Zhou, Keyuan and Zheng, Wenzhao and Huang, Wenke and Xu, Gangwei and Horton, Mike and Si, Yuan and Zhao, Hao and Chen, Long},
+  journal={arXiv preprint arXiv:2508.13977},
+  year={2025}
 }
 ```
 
