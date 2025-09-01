@@ -100,18 +100,53 @@ The dataset is available under the following licenses:
 
 For detailed licensing information, please see [LICENSE.md](https://github.com/rovr-network/ROVR-Open-Dataset/blob/main/LICENSE.md).
 
-## Getting Started
 
+
+## ROVR Network Open Dataset
+
+### Getting Started
 Explore, download, and contribute to **ROVR Open Dataset** to help shape the future of autonomous driving.
 
-- **Access Dataset Samples:** [Access Dataset](https://github.com/rovr-network/ROVR-Open-Dataset/tree/main/Samples)
-- **Access Full Dataset:** [Google Drive](https://drive.google.com/drive/folders/1nCT6grlveES2kYwYU6NPyjiF3rhJ-NZk?usp=sharing)
+[![Access Dataset Samples](https://img.shields.io/badge/Access-Dataset%20Samples-blue)](https://github.com/rovr-network/ROVR-Open-Dataset/tree/main/Samples/20250517173254-1025040009-34-lUNe)
 
-## Citation
+---
 
-If you use the ROVR Open Dataset or related resources, please cite us as:
+### Dataset Usage Rules
+This dataset and its subsets can only be used after signing the agreement.
 
-```
+Without permission, it is not allowed to forward, publish, or distribute this dataset or its subsets to any organization or individual in any way or by any means.
+
+Any copy and sharing requests should be forwarded to the official contact email.
+
+Please cite our paper if the **ROVR Open Dataset** is useful to your research.
+
+---
+
+### Full Dataset Access
+All users can obtain and use this dataset and its subsets only after signing the Agreement and sending it to the official contact email.
+
+For students, research groups, or research institutions who need to obtain this data, signatures of both the Responsible Party and the Point of Contact (POC) are required:
+
+- **Responsible Party**: Tutor of the research group or a representative of the research institution, with authority to sign the agreement. Must be permanent personnel of the institution.
+- **Point of Contact (POC)**: Individual with detailed knowledge of the dataset application. In some cases, the Responsible Party and the POC may be the same person.
+- The homepage of the Responsible Party (or research group, laboratory, department, etc.) must be provided to prove the role.
+
+Please send the signed Agreement in scanned copy format to the official contact email:
+📧 [yuan.si@rovr.network](mailto:yuan.si@rovr.network)
+
+Please CC the Responsible Party when sending the email.
+
+**Email format for ROVR Open Dataset application**:
+
+- **Subject**: ROVR Open Dataset Application
+- **CC**: The email address of the Responsible Party
+- **Attachment**: `ROVR_Open_Dataset_Agreement.pdf` (scanned copy)
+---
+
+### Citation
+If you use the **ROVR Open Dataset** or related resources, please cite us as:
+
+```bibtex
 @article{guo2025rovr,
   title={ROVR-Open-Dataset: A Large-Scale Depth Dataset for Autonomous Driving},
   author={Guo, Xianda and Zhang, Ruijun and Duan, Yiqun and Wang, Ruilin and Zhou, Keyuan and Zheng, Wenzhao and Huang, Wenke and Xu, Gangwei and Horton, Mike and Si, Yuan and Zhao, Hao and Chen, Long},
@@ -119,8 +154,6 @@ If you use the ROVR Open Dataset or related resources, please cite us as:
   year={2025}
 }
 ```
-
-This citation will be updated once the official publication is available.
 
 ## Join the Community
 
