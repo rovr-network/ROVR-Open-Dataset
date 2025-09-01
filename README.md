@@ -112,7 +112,7 @@ Explore, download, and contribute to **ROVR Open Dataset** to help shape the fut
 ---
 
 ### Dataset Usage Rules
-This dataset and its subsets can only be used after signing the agreement.
+This dataset and its subsets can only be used after signing the [agreement](https://github.com/rovr-network/ROVR-Open-Dataset/blob/main/images/ROVR_Open_Dataset_Agreement.pdf).
 
 Without permission, it is not allowed to forward, publish, or distribute this dataset or its subsets to any organization or individual in any way or by any means.
 
