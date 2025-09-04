@@ -1,6 +1,6 @@
 # Fast-LIO for ROVR Data
 
-This project is a modified version of Fast-Lio, specifically for processing data from the ROVR platform.
+This project is a modified version of Fast-Lio(refer to README_fastlio_origin.md), specifically for processing data from the ROVR platform.
 
 ### Modifications
 1.  **Adapted for ROVR LiDAR Data:** Updated the point cloud subscriber and pre-processing logic to be compatible with the ROVR sensor's data format and topics.
