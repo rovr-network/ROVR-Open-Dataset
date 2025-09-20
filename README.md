@@ -34,7 +34,7 @@ ROVR Open Dataset includes various data types to support different autonomous dr
 - **Monocular Depth Estimation:** High-precision depth information to aid autonomous driving perception.
 - **Object Detection:** Real-time detection of vehicles, pedestrians, and obstacles.
 - **Semantic Segmentation:** Pixel-level segmentation of roads, obstacles, and other features.
-
+  
 <table align="center">
   <tr>
     <td align="center" style="padding: 10px;">
