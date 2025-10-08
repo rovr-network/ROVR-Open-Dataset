@@ -21,7 +21,7 @@ class Ros2BagProcessor:
 
       self.time_sync = False
       self.time_diff = 0.09
-      self.capture_diff_thresh = 0.048
+      self.capture_diff_thresh = 10.048
       self.valid_count = 0
       self.total_count = 0
       self.capture_diff = 0
@@ -52,9 +52,10 @@ class Ros2BagProcessor:
           elif 'pointcloud' in topic.lower():
               self.pc_queue.put(msg)
           elif 'nmea_sentence' in topic.lower():
-              self.gnss_handler.process_gprmc(msg)
+              self.gnss_handler.process_gnss(msg)
           elif 'imu' in topic.lower():
-              self.imu_handler.process_imu(msg)
+              attitude_data = self.imu_handler.process_imu(msg)
+              self.gnss_handler.add_attitude_data(attitude_data)
 
           self._process_msgs()
 

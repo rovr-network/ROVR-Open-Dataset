@@ -23,7 +23,7 @@ def process_single_bag(args):
 
       avg_diff = processor.capture_diff / processor.total_count if processor.total_count > 0 else 0
 
-      if processor.valid_count < 130:
+      if processor.valid_count < 0:
           print(f"Warning: Only {processor.valid_count} valid pairs found, deleting output directory...")
           return (base_name, processor.valid_count, avg_diff, False)
       return (base_name, processor.valid_count, avg_diff, True)

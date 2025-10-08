@@ -2,21 +2,113 @@ import os
 import json
 import math
 from pyproj import Proj
+import numpy as np
 
 class GNSSHandler:
   def __init__(self):
       self.gnss_data = []
       self.image_poses = []
       self.zone_id = -1
+      self.gpgga_buffer = []
+      self.gprmc_buffer = []
+      self.matched_data = []
 
-  def process_gprmc(self, msg):
+      self.recent_attitudes = []
+      self.max_attitude_history = 500
+
+  def add_attitude_data(self, attitude_data):
+      """Add attitude data from IMU for later use"""
+      self.recent_attitudes.append(attitude_data)
+      
+      # Keep only recent history
+      if len(self.recent_attitudes) > self.max_attitude_history:
+          self.recent_attitudes.pop(0)
+
+  def get_attitude_for_timestamp(self, target_timestamp):
+      """Get attitude data for specific timestamp using nearest neighbor"""
+      if not self.recent_attitudes:
+          return None
+          
+      # Find closest attitude data
+      closest = min(self.recent_attitudes, key=lambda x: abs(x['timestamp'] - target_timestamp))
+      
+      # Check if time difference is acceptable (100ms threshold)
+      if abs(closest['timestamp'] - target_timestamp) > 0.1:
+          return None
+          
+      return closest
+
+  def process_gnss(self, msg, current_attitude=None):
       """Process GPRMC message"""
       try:
-          parsed = self._parse_gprmc(msg.sentence, self._to_sec(msg.header.stamp))
-          if parsed:
-              self.gnss_data.append(parsed)
+          timestamp = self._to_sec(msg.header.stamp)
+          sentence = str(msg.sentence)
+          
+          if 'RMC' in sentence:
+              attitude_to_use = current_attitude or self.get_attitude_for_timestamp(timestamp)
+              parsed_rmc = self._parse_gprmc(sentence, timestamp, attitude_to_use)
+              if parsed_rmc:
+                  self.gprmc_buffer.append(parsed_rmc)
+                  self._try_match_data()
+                  
+          elif 'GGA' in sentence:
+              parsed_gga = self._parse_gpgga(sentence, timestamp)
+              if parsed_gga:
+                  self.gpgga_buffer.append(parsed_gga)
+                  self._try_match_data()
+
+          # for rmc_data in self.gprmc_buffer:
+          #     print(f"Warning: Unmatched GPRMC data at timestamp {rmc_data['timestamp']}")
+          #     rmc_data["utm_z"] = 0.0
+          #     # self._update_with_roll_pitch(rmc_data)
+          #     self.matched_data.append(rmc_data)
+          #     self.gnss_data.append(rmc_data)
+
       except Exception as e:
-          print(f"GPRMC processing error: {str(e)}")
+          print(f"GNSS processing error: {str(e)}")
+
+  def _try_match_data(self):
+      if self.gprmc_buffer and self.gpgga_buffer:
+          self.gprmc_buffer.sort(key=lambda x: x["timestamp"])
+          self.gpgga_buffer.sort(key=lambda x: x["timestamp"])
+          
+          matched_indices = set()
+          for i, rmc_data in enumerate(self.gprmc_buffer):
+              best_match_idx = None
+              min_time_diff = float('inf')
+              
+              for j, gga_data in enumerate(self.gpgga_buffer):
+                  if j in matched_indices:
+                      continue
+                  
+                  time_diff = abs(rmc_data["timestamp"] - gga_data["timestamp"])
+                  if time_diff < min_time_diff and time_diff < 0.2:  
+                      min_time_diff = time_diff
+                      best_match_idx = j
+              
+              if best_match_idx is not None:
+                  matched_data = self._combine_rmc_gga(rmc_data, self.gpgga_buffer[best_match_idx])
+                  self.matched_data.append(matched_data)
+                  self.gnss_data.append(matched_data)
+                  matched_indices.add(best_match_idx)
+                  # print("find match",len(self.gnss_data))
+          
+          self.gprmc_buffer = [rmc for i, rmc in enumerate(self.gprmc_buffer) 
+                              if i not in [idx for idx in range(len(self.gprmc_buffer)) 
+                                        if i not in matched_indices]]
+          self.gpgga_buffer = [gga for j, gga in enumerate(self.gpgga_buffer) 
+                              if j not in matched_indices]
+          
+
+  def _combine_rmc_gga(self, rmc_data, gga_data):
+      combined = rmc_data.copy()
+      combined["utm_z"] = gga_data["elevation"]
+      # combined["gga_timestamp"] = gga_data["timestamp"]
+      # combined["time_diff"] = abs(rmc_data["timestamp"] - gga_data["timestamp"])
+      
+      # self._update_with_roll_pitch(combined)
+      
+      return combined
 
   def calculate_image_poses(self, image_timestamps):
       """Calculate poses for all image timestamps"""
@@ -49,7 +141,7 @@ class GNSSHandler:
       with open(image_pose_path, 'w') as f:
           json.dump(self.image_poses, f, indent=2)
 
-  def _parse_gprmc(self, gprmc_msg, timestamp):
+  def _parse_gprmc(self, gprmc_msg, timestamp, attitude_data=None):
       parts = gprmc_msg.split(',')
       if len(parts) < 10 or parts[0].find("RMC") == -1 or parts[2] != 'A':
           return None
@@ -83,12 +175,24 @@ class GNSSHandler:
       x, y = projector(lon, lat)
       z = 0.0  # Assume altitude is 0
 
-      # Calculate quaternion
-      rad = math.radians(heading)
-      qw = math.cos(rad / 2)
-      qx = 0.0
-      qy = 0.0
-      qz = math.sin(rad / 2)
+      # Use IMU attitude if available, otherwise use GNSS-only
+      if attitude_data:
+          # Use IMU roll/pitch with GNSS heading
+          roll_deg = attitude_data['roll_deg']
+          pitch_deg = attitude_data['pitch_deg']
+          yaw_rad = math.radians(heading)
+          
+          # Create full quaternion
+          quaternion = self._create_quaternion_from_rpy(
+              math.radians(roll_deg), 
+              math.radians(pitch_deg), 
+              yaw_rad
+          )
+      else:
+          # Fallback to GNSS-only (yaw only)
+          yaw_rad = math.radians(heading)
+          quaternion = [math.cos(yaw_rad / 2), 0.0, 0.0, math.sin(yaw_rad / 2)]
+          roll_deg, pitch_deg = 0.0, 0.0
 
       return {
           "timestamp": timestamp,
@@ -102,8 +206,27 @@ class GNSSHandler:
           "date": date_str,
           "hemisphere_ns": parts[4],
           "hemisphere_ew": parts[6],
-          "quaternion": [qw, qx, qy, qz]
+          "quaternion": quaternion
       }
+
+  def _parse_gpgga(self, gpgga_msg, timestamp):
+      parts = gpgga_msg.split(',')
+      if len(parts) < 10 or parts[0].find("GGA") == -1:
+          return None
+      
+      try:
+          elevation = float(parts[9]) if parts[9] else 0.0
+          if len(parts) > 10 and parts[10] == 'F':  
+              elevation *= 0.3048
+          
+          return {
+              "timestamp": timestamp,
+              "elevation": elevation
+          }
+          
+      except (ValueError, IndexError) as e:
+          print(f"GPGGA parsing error: {e}")
+          return None
 
   def _interpolate_pose(self, target_time_stamp):
       """Interpolate pose, handling heading angle correctly"""
@@ -301,5 +424,21 @@ class GNSSHandler:
           for i in range(4)
       ]
 
+  def _create_quaternion_from_rpy(self, roll, pitch, yaw):
+      """Create quaternion from roll, pitch, yaw angles"""
+      cy = math.cos(yaw * 0.5)
+      sy = math.sin(yaw * 0.5)
+      cp = math.cos(pitch * 0.5)
+      sp = math.sin(pitch * 0.5)
+      cr = math.cos(roll * 0.5)
+      sr = math.sin(roll * 0.5)
+      
+      qw = cr * cp * cy + sr * sp * sy
+      qx = sr * cp * cy - cr * sp * sy
+      qy = cr * sp * cy + sr * cp * sy
+      qz = cr * cp * sy - sr * sp * cy
+      
+      return [qw, qx, qy, qz]
+  
   def _to_sec(self, stamp):
       return stamp.sec + stamp.nanosec / 1e9
