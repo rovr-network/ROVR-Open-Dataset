@@ -6,7 +6,7 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-2508.13977v1%20[cs.CV]-b31b1b)](https://arxiv.org/abs/2508.13977)
 [![Project Page](https://img.shields.io/badge/Project%20Page-ROVR--Open--Dataset-blue)](https://xiandaguo.net/ROVR-Open-Dataset/)
-[![Hugging Face 🤗](https://img.shields.io/badge/HuggingFace-Coming%20Soon-orange)](https://huggingface.co/)
+[![Hugging Face 🤗](https://img.shields.io/badge/HuggingFace-ROVRNetwork-orange)](https://huggingface.co/)
 [![Benchmark](https://img.shields.io/badge/Benchmark-ROVR%20Open%20Dataset-yellow)](https://drive.google.com/drive/folders/1nCT6grlveES2kYwYU6NPyjiF3rhJ-NZk?usp=sharing)
 
 
