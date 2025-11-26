@@ -18,7 +18,7 @@ Welcome to the **ROVR Open Dataset** repository! This dataset is designed to emp
 </div>
 
 ## Key Features
-- **Global Coverage:** 50+ countries with diverse driving environments and road scenarios.
+- **Global Coverage:** 90+ countries with diverse driving environments and road scenarios.
 - **High-Resolution Data:** Data from high-precision **ADAS cameras** and **LiDAR sensors**.
 - **Real-World Scenarios:** Over **20M+ kilometers** of real-world driving data representing various environments and conditions.
 - **Comprehensive Data Types:** Includes point clouds, monocular depth estimation, object detection, and semantic segmentation.
