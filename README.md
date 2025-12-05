@@ -72,7 +72,7 @@ The Omni-Quad Dataset provides high-fidelity 3D perception data with dense, mult
 - Panoptic and semantic analysis  
 - Autonomous driving and robotics research  
 
-### Key Characteristics
+### Key Features
 - **Full 360° coverage** using four synchronized LC sensors  
 - **High-density multi-view LiDAR point clouds**  
 - **Synchronized camera–LiDAR data** ideal for multimodal fusion  
