@@ -1,3 +1,4 @@
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/rovrcar.jpg" alt="ROVR-Car" width="700"/>
 </div>
@@ -57,6 +58,32 @@ ROVR Open Dataset includes various data types to support different autonomous dr
     </td>
   </tr>
 </table>
+
+## Omni-Quad Dataset
+
+We are excited to introduce the **Omni-Quad Dataset**, a surround-view extension of the ROVR Open Dataset.  
+This dataset is built using **4 LightCone (LC) units** mounted in the **front, rear, left, and right** directions, forming a synchronized **360° multi-view LiDAR–camera perception system**.
+
+The Omni-Quad Dataset provides high-fidelity 3D perception data with dense, multi-directional coverage, making it well-suited for:
+
+- Surround-view depth estimation  
+- Multi-view LiDAR fusion  
+- 360° perception and scene understanding  
+- Panoptic and semantic analysis  
+- Autonomous driving and robotics research  
+
+### Key Characteristics
+- **Full 360° coverage** using four synchronized LC sensors  
+- **High-density multi-view LiDAR point clouds**  
+- **Synchronized camera–LiDAR data** ideal for multimodal fusion  
+- **Globally collected** across diverse real-world environments  
+- Suitable for **fusion-based perception, 3D reconstruction, and scene analysis**
+
+Below is a preview GIF showing the fused 360° surround-view point cloud output:
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/Omni-Quad%20Dataset.gif" width="600"/>
+</div>
 
 ## ROVR Open Dataset Overview
 
