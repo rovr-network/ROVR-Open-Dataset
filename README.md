@@ -61,6 +61,8 @@ ROVR Open Dataset includes various data types to support different autonomous dr
 
 ## Omni-Quad Dataset
 
+![Omni-Quad Setup](https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/Omni-Quad%20_setup.png)
+
 We are excited to introduce the **Omni-Quad Dataset**, a surround-view extension of the ROVR Open Dataset.  
 This dataset is built using **4 LightCone (LC) units** mounted in the **front, rear, left, and right** directions, forming a synchronized **360° multi-view LiDAR–camera perception system**.
 
