@@ -62,7 +62,7 @@ ROVR Open Dataset includes various data types to support different autonomous dr
 ## Omni-Quad Dataset
 
 <div align="center">
-  <img src="[https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/rovrcar.jpg](https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/Omni-Quad%20_setup.png)" alt="ROVR-Omni-Quad Setup" width="700"/>
+  <img src="https://raw.githubusercontent.com/rovr-network/ROVR-Open-Dataset/main/images/Omni-Quad%20_setup.png" alt="ROVR-Omni-Quad Setup" width="700"/>
 </div>
 
 We are excited to introduce the **Omni-Quad Dataset**, a surround-view extension of the ROVR Open Dataset.  
