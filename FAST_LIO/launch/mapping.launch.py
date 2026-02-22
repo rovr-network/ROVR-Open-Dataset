@@ -49,8 +49,8 @@ def generate_launch_description():
         parameters=[PathJoinSubstitution([config_path, config_file]),
                     {'use_sim_time': use_sim_time}],
         output='screen',
-        sigterm_timeout='30.0',  # 将 SIGTERM 超时延长至 30 秒
-        sigkill_timeout='60.0'   # 将 SIGKILL 超时延长至 60 秒（可选）
+        sigterm_timeout='30.0',  
+        sigkill_timeout='60.0'   
     )
     rviz_node = Node(
         package='rviz2',
