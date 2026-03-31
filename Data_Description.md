@@ -122,7 +122,7 @@ ROVR-Open-Dataset/
 - **alpha**: Observation angle in radians, range [0, 2π].
 - **x1, y1, x2, y2**: Top-left and bottom-right corners of the 2D bounding box (pixels). -1 for missing data.
 - **height, width, length**: 3D size of the object (in meters).
-- **x, y, z**: 3D location in camera coordinates (in meters).
+- **x, y, z**: The geometric center of the 3D bounding box in camera coordinates (in meters).  
 - **rotation_y**: Rotation around Y-axis (radians), range [-π, π].
 - **bbox_3d_points**: 8-point 3D bounding box, may be projected to 2D pixel space.
 
